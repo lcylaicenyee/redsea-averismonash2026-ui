@@ -32,13 +32,17 @@ const FileUpload: React.FC = () => {
       
       // Reset file input on success
       setSelectedFile(null);
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
-      setStatus({ 
-        message: 'Upload failed.', 
-        error: errorMessage 
-      });
-    } finally {
+  } catch (err: any) {
+    const errorMessage =
+    err?.response?.data?.message ||
+    err?.message ||
+    'An unknown error occurred';
+
+    setStatus({
+    message: 'Upload failed.',
+    error: errorMessage
+    });
+  } finally {
       setIsUploading(false);
     }
   };
@@ -49,6 +53,7 @@ const FileUpload: React.FC = () => {
       
       <input 
         type="file" 
+        accept=".pdf,.doc,.docx,.txt"
         onChange={handleFileChange} 
         disabled={isUploading} 
       />

@@ -5,11 +5,11 @@ export interface UploadResponse {
 }
 
 export interface UploadResult {
-    _id: string,
+    id: string,
     originalName: string,
     mimeType: string,
     size: number,
-    uploadedAt: Date
+    uploadedAt: string;
 }
 
 export interface UploadStatus {
