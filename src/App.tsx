@@ -5,7 +5,6 @@ import { Header } from './components/Header'
 import './styles.css';
 import { BrowserRouter, Route, Routes  } from 'react-router-dom';
 import { CreateUserPage } from './components/CreateUserPage';
-import { useUsers } from './hooks/useUsers';
 
 const App: React.FC = () => {
     const [showForm, setShowForm] = useState(false);
