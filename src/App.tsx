@@ -5,14 +5,17 @@ import { Header } from './components/Header'
 import './styles.css';
 import { BrowserRouter, Route, Routes  } from 'react-router-dom';
 import { CreateUserPage } from './components/CreateUserPage';
+import { LoginUserPage } from './components/LoginUserPage';
 
 const App: React.FC = () => {
-    const [showForm, setShowForm] = useState(false);
+    const [showRegisterForm, setShowRegisterForm] = useState(false);
+    const [showLoginForm, setShowLoginForm] = useState(false);
 
   return (
     <UserProvider>
       <Header 
-        setShowLoginForm={setShowForm}
+        setShowLoginForm={setShowLoginForm}
+        setShowRegisterForm={setShowRegisterForm}
       />
       <BrowserRouter>
         {/* Routes */}
@@ -23,8 +26,11 @@ const App: React.FC = () => {
       <div className="app">
       </div>
 
-      {showForm && (<CreateUserPage 
-          setShowForm={setShowForm}
+      {showRegisterForm && (<CreateUserPage 
+          setShowForm={setShowRegisterForm}
+      />)}
+      {showLoginForm && (<LoginUserPage 
+          setShowForm={setShowLoginForm}
       />)}
     </UserProvider>
   );

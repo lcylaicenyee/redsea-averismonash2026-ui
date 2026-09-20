@@ -1,13 +1,12 @@
 import React, { useState, ChangeEvent } from 'react';
 
-export interface UserFormProps {
-  onSubmit: (data: { name: string; email: string; password: string }) => Promise<void>;
+export interface LoginUserFormProps {
+  onSubmit: (data: { email: string; password: string }) => Promise<void>;
   onCancel: () => void;
 }
 
-export const UserForm: React.FC<UserFormProps> = ({ onSubmit, onCancel }) => {
+export const LoginUserForm: React.FC<LoginUserFormProps> = ({ onSubmit, onCancel }) => {
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: ''
   });
@@ -31,22 +30,7 @@ export const UserForm: React.FC<UserFormProps> = ({ onSubmit, onCancel }) => {
 
   return (
     <form onSubmit={handleSubmit} className="user-form">
-      <h3>Create New User</h3>
-
-      <div className="form-group">
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          minLength={2}
-          maxLength={50}
-          placeholder="John Doe"
-        />
-      </div>
+      <h3>Login User</h3>
 
       <div className="form-group">
         <label htmlFor="email">Email</label>
@@ -77,7 +61,7 @@ export const UserForm: React.FC<UserFormProps> = ({ onSubmit, onCancel }) => {
 
       <div className="form-actions">
         <button type="submit" disabled={loading} className="btn-primary">
-          {loading ? 'Creating...' : 'Create User'}
+          {loading ? 'Logging In...' : 'Login'}
         </button>
         <button type="button" onClick={onCancel} className="btn-secondary">
           Cancel

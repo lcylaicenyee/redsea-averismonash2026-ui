@@ -1,6 +1,6 @@
 import { useUsers } from '../hooks/useUsers';
 import React from 'react';
-import { UserForm } from './UserForm';
+import { CreateUserForm } from './CreateUserForm';
 
 export interface CreateUserPageProps {
   setShowForm: (bool:boolean) => void;
@@ -20,7 +20,7 @@ export const CreateUserPage : React.FC<CreateUserPageProps> = ({setShowForm}) =>
         <div className="create-user-section">
             <div className="modal-overlay">
             <div className="modal">
-            <UserForm
+            <CreateUserForm
                 onSubmit={handleCreateUser}
                 onCancel={() => setShowForm(false)}
                 />
