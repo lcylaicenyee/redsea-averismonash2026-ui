@@ -1,5 +1,5 @@
 import { api } from './client';
-import { ApiResponse } from '../types/user';
+import { ApiResponse, LoginResponse } from '../types/user';
 import { User } from '../types/user';
 import { AxiosResponse } from 'axios';
 
@@ -38,8 +38,8 @@ export const userService = {
   },
 
   // Login - returns Promise<ApiResponse<{ token: string; user: User }>>
-  login: async (data: { email: string; password: string }): Promise<ApiResponse<{ token: string; user: User }>> => {
-    const response = await api.post<ApiResponse<{ token: string; user: User }>>('/users/login', data);
+  login: async (data: { email: string; password: string }): Promise<ApiResponse<LoginResponse>> => {
+    const response = await api.post<ApiResponse<LoginResponse>>('/users/login', data);
     return extractData(response);
   }
 };

@@ -26,3 +26,8 @@ export interface ApiResponse<T> {
   errors?: Array<{ field: string; message: string }>;
   count?: number;
 }
+
+export interface LoginResponse {
+  token: string;
+  user: User;
+}
