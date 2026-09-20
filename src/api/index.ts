@@ -2,6 +2,7 @@ import { api } from './client';
 import { ApiResponse, LoginResponse } from '../types/user';
 import { User } from '../types/user';
 import { AxiosResponse } from 'axios';
+import { UploadResponse } from '../types/document';
 
 // Helper to extract data from AxiosResponse
 const extractData = <T>(response: AxiosResponse<T>): T => response.data;
@@ -43,3 +44,21 @@ export const userService = {
     return extractData(response);
   }
 };
+
+export const documentService = {
+  /**
+   * Sends a file to the backend using FormData.
+   * Multer will process this as a multipart/form-data request.
+   */
+  uploadFile : async (file: File): Promise<UploadResponse> => {
+    console.log(file);
+    const formData = new FormData();
+    
+    // IMPORTANT: The string 'document' must match the field name 
+    // used in your Multer configuration (e.g., upload.single('document'))
+    formData.append('document', file);
+
+    const response = await api.post<UploadResponse>('/documents', formData);
+    return extractData(response);
+  }
+}
