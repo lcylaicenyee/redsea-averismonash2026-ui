@@ -1,21 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route, NavLink } from "react-router";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 
-import './index.css'
-import App from './App.tsx'
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+root.render(
+  <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route index element={<App />} />
-      </Routes>
-    </BrowserRouter>
-    
-    <nav>
-      <NavLink to="/">Home</NavLink>
       <App />
-    </nav>
-  </StrictMode>,
-)
+    </BrowserRouter>
+  </React.StrictMode>
+);
+

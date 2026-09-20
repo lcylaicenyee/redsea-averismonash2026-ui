@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/api/client.ts","./src/api/index.ts","./src/components/loadingspinner.tsx","./src/components/usercard.tsx","./src/components/userform.tsx","./src/components/userlist.tsx","./src/context/usercontext.tsx","./src/hooks/useusers.ts","./src/types/user.ts"],"version":"6.0.3"}
