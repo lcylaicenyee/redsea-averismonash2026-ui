@@ -1,25 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { UserProvider } from './context/UserContext';
 import { UserContent } from './components/UserContent';
-import { LoadingSpinner } from './components/LoadingSpinner';
+import { Header } from './components/Header'
 import './styles.css';
+import { BrowserRouter, Route, Routes  } from 'react-router-dom';
+import { CreateUserPage } from './components/CreateUserPage';
+import { useUsers } from './hooks/useUsers';
 
 const App: React.FC = () => {
+    const [showForm, setShowForm] = useState(false);
+
   return (
     <UserProvider>
+      <Header 
+        setShowLoginForm={setShowForm}
+      />
+      <BrowserRouter>
+        {/* Routes */}
+        <Routes>
+          <Route path="/" element={<UserContent />} />
+        </Routes>
+      </BrowserRouter>
       <div className="app">
-        <header className="app-header">
-          <h1>React + Node.js + MongoDB User App</h1>
-          <nav className="nav">
-            <a href="#users">Users</a>
-            <a href="#create">Create User</a>
-          </nav>
-        </header>
-
-        <UserContent />
-
-        <LoadingSpinner />
       </div>
+
+      {showForm && (<CreateUserPage 
+          setShowForm={setShowForm}
+      />)}
     </UserProvider>
   );
 };

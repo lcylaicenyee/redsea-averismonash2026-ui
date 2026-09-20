@@ -1,6 +1,7 @@
 import React from 'react';
 import { UserCard } from './UserCard.tsx';
 import { useUsers } from '../hooks/useUsers.ts';
+import { LoadingSpinner } from './LoadingSpinner.tsx';
 
 export const UserList: React.FC = () => {
   const { users, loading, error, fetchUsers } = useUsers();
@@ -17,6 +18,8 @@ export const UserList: React.FC = () => {
           Refresh
         </button>
       </div>
+
+      {loading && <LoadingSpinner />}
 
       {loading && <div className="loading">Loading users...</div>}
       {error && <div className="error">Error: {error}</div>}

@@ -10,7 +10,11 @@ export const useUsers = () => {
   const { user } = useUserContext();
 
   const fetchUsers = useCallback(async () => {
-    if (!user) return;
+    if (!user) 
+    {
+      setError("Not Logged In! Please Log in to Proceed");
+      return;
+    }
 
     setLoading(true);
     setError(null);
