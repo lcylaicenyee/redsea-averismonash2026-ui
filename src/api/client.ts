@@ -7,8 +7,7 @@ class ApiClient {
   constructor(baseURL: string = '/api/v1') {
     //this.baseURL = baseURL;
     this.client = axios.create({
-      baseURL,
-      headers: { 'Content-Type': 'application/json' }
+      baseURL
     });
 
     // Add auth interceptor
@@ -52,4 +51,8 @@ class ApiClient {
   }
 }
 
-export const api = new ApiClient(`${import.meta.env.VITE_BACKEND_URL}/api/v1` || "/api/v1");
+const backendUrl = (
+  import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000'
+).replace(/\/+$/, '');
+
+export const api = new ApiClient(`${backendUrl}/api/v1`);
